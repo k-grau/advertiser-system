@@ -1,0 +1,71 @@
+@model IEnumerable<Advertisers.Models.AdViewModel>
+
+@{
+    ViewData["Title"] = "Alla annonser";
+}
+
+<h2>Samtliga annonser</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad.Ad_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertiser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad.Ad_Headline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad.Ad_ArticlePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad.Ad_Type)
+            </th>
+            @* <th>
+                <a asp-action="Index" asp-route-sort="@ViewData["MemberNumberSortParm"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th> *@
+            <th>
+                Detaljer
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Ad.Ad_Id)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Advertiser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad.Ad_Headline)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad.Ad_ArticlePrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad.Ad_Type)
+                </td>
+        
+                <td>
+                    @Html.ActionLink("Se annons", "AdDetails", new { adid = item.Ad.Ad_Id, adtypeId = item.Ad.Ad_TypeId }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* <div class="form-row d-inline-block">
+    <input type="button" value="Ny medlem" class="btn btn-primary" onclick="@("window.location.href='" + @Url.Action("Add", "Theatre") + "'");" />
+    <input type="button" value="Sök medlem" class="btn btn-secondary" onclick="@("window.location.href='" + @Url.Action("Search", "Theatre") + "'");" />
+</div> *@
+
+
+
+

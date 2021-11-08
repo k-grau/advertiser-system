@@ -1,0 +1,118 @@
+@model Advertisers.Models.AdViewModel
+
+@{
+    ViewData["Title"] = "Annonsdetaljer";
+    String address = "";
+    int postCode = 0;
+    String city = "";
+    String phone = ""; 
+
+    if(Model.Ad.Ad_TypeId == 1)
+    {
+        address = Model.SubscriberContact.Address;
+        city = Model.SubscriberContact.City;
+        postCode = Model.SubscriberContact.Postcode;
+        phone = Model.SubscriberContact.Phone;   
+    }
+
+    if(Model.Ad.Ad_TypeId == 2)
+    {
+        address = Model.CompanyContact.ContactAddress;
+        city = Model.CompanyContact.ContactCity;
+        postCode = Model.CompanyContact.ContactPostcode;
+        phone = Model.CompanyContact.ContactPhone;   
+    }      
+}
+
+
+<h1>
+    Annonsör: @Html.DisplayFor(model => Model.Advertiser)
+    
+</h1>
+
+<div>
+    <h4>
+        Annonsuppgifter
+    </h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Advertiser)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Advertiser)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Headline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_Headline)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_ArticlePrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_ArticlePrice) kr
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_AdPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model =>  Model.Ad.Ad_AdPrice) kr
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model =>  Model.Ad.Ad_Type)
+        </dd>
+
+        <dt class="col-sm-2">
+            Adress
+        </dt>
+        <dd class="col-sm-10">
+            @address,
+            @postCode,
+            @city
+        </dd>
+        <dt class="col-sm-2">
+            Telefon
+        </dt>
+        <dd class="col-sm-10">
+            @phone
+        </dd>
+
+        @{
+            if(Model.Ad.Ad_TypeId == 2) 
+            {
+                 <dt class="col-sm-2">
+                     Fakturaadress
+                </dt>
+                <dd class="col-sm-10">
+                @Html.DisplayFor(model => Model.CompanyBilling.BillingAddress),
+                @Html.DisplayFor(model => Model.CompanyBilling.BillingPostcode),
+                @Html.DisplayFor(model => Model.CompanyBilling.BillingCity)
+                </dd>
+            }
+        }
+    </dl>
+</div>
+<div>
+
+</div>
+<p></p>
+<div>
+    <a asp-action="AdList">Se alla annonser</a>
+</div>

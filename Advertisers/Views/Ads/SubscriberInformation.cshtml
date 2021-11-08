@@ -1,0 +1,74 @@
+@model Advertisers.Models.SubscriberViewModel
+
+@{
+    ViewData["Title"] = "Prenumerantannons - uppgifter";
+    
+}
+
+
+<h1>
+    Lägg in ny annons
+</h1>
+
+<h4>Kontrollera att uppgifterna stämmer</h4>
+<p>Ändra om något är fel</p>
+<hr />
+@ViewBag.error
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SubscriberInformation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SubscriberNo" class="col-form-label font-weight-bold"></label>
+                <input readonly asp-for="SubscriberNo" class="form-control" />
+                <span asp-validation-for="SubscriberNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalNo" class="col-form-label font-weight-bold"></label>
+                <input asp-for="PersonalNo" class="form-control" />
+                <span asp-validation-for="PersonalNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Firstname" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.Address" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.Address" class="form-control" />
+                <span asp-validation-for="Contact.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.Postcode" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.Postcode"  class="form-control" />
+                <span asp-validation-for="Contact.Postcode"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.City"  class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.City"  class="form-control" required/>
+                <span asp-validation-for="Contact.City"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.Phone"  class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.Phone"  class="form-control" />
+                <span asp-validation-for="Contact.Phone"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Till annons ->" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@Html.AntiForgeryToken()

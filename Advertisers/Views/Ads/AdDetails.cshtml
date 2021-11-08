@@ -1,0 +1,80 @@
+@model Advertisers.Models.AdViewModel
+
+@{
+    ViewData["Title"] = "Annonsdetaljer";
+    String phone = ""; 
+
+    if(Model.Ad.Ad_TypeId == 1)
+    {
+        phone = Model.SubscriberContact.Phone;   
+    }
+
+    if(Model.Ad.Ad_TypeId == 2)
+    {
+        phone = Model.CompanyContact.ContactPhone;   
+    }      
+}
+
+
+<h1>
+   @Html.DisplayFor(model =>  Model.Ad.Ad_Headline)
+    
+</h1>
+
+<div>
+    <h4>
+        Annonsör: @Html.DisplayFor(model => Model.Advertiser) 
+    </h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Advertiser)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Advertiser)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Headline)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_Headline)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_ArticlePrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => Model.Ad.Ad_ArticlePrice) kr
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => Model.Ad.Ad_Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model =>  Model.Ad.Ad_Type)
+        </dd>
+        <dt class="col-sm-2">
+            Telefon
+        </dt>
+        <dd class="col-sm-10">
+            @phone
+        </dd>
+    </dl>
+</div>
+<div>
+
+</div>
+<p></p>
+<div>
+    <a asp-action="AdList">Tillbaka till alla annonser</a>
+</div>

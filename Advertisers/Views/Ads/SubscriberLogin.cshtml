@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Prenumerantannons - prenumerationsnummer";
+    
+}
+
+
+<h1>
+    Lägg in ny annons
+</h1>
+
+<h4>Ange prenumerationsnummer</h4>
+<hr />
+@ViewBag.error
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SubscriberLogin">
+            <label for="Subscriber" class="col-form-label font-weight-bold">Prenumerationsnummer:</label>
+            <input type="number" value="SubscriberNo" id="Subscriber" name="Subscriber" required/><br />
+                <br />
+                <input type="submit" value="Gå vidare" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@Html.AntiForgeryToken()

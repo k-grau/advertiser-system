@@ -1,0 +1,81 @@
+@model Advertisers.Models.CompanyViewModel
+
+@{
+    ViewData["Title"] = "Företagsannons - uppgifter";
+    
+}
+
+
+<h1>
+    Lägg in ny annons
+</h1>
+
+<h4>Fyll i företagets uppgifter</h4>
+<hr />
+@ViewBag.error
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CompanyInformation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Details.OrgNo" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Details.OrgNo" class="form-control" />
+                <span asp-validation-for="Details.OrgNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Details.Name" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Details.Name" class="form-control" />
+                <span asp-validation-for="Details.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.ContactAddress" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.ContactAddress" class="form-control" />
+                <span asp-validation-for="Contact.ContactAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.ContactPostcode" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.ContactPostcode"  class="form-control" />
+                <span asp-validation-for="Contact.ContactPostcode"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.ContactCity"  class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.ContactCity"  class="form-control" />
+                <span asp-validation-for="Contact.ContactCity"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact.ContactPhone"  class="col-form-label font-weight-bold"></label>
+                <input asp-for="Contact.ContactPhone"  class="form-control" />
+                <span asp-validation-for="Contact.ContactPhone"  class="text-danger"></span>
+            </div>
+            <br />
+            <h4>Fyll i företagets fakturauppgifter</h4>
+            <div class="form-group">
+                <label asp-for="Billing.BillingAddress" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Billing.BillingAddress" class="form-control" />
+                <span asp-validation-for="Billing.BillingAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Billing.BillingPostcode" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Billing.BillingPostcode"  class="form-control" />
+                <span asp-validation-for="Billing.BillingPostcode"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Billing.BillingCity"  class="col-form-label font-weight-bold"></label>
+                <input asp-for="Billing.BillingCity"  class="form-control" />
+                <span asp-validation-for="Billing.BillingCity"  class="text-danger"></span>
+            </div>
+            @ViewBag.msg
+            <div class="form-group">
+                <input type="submit" value="Till annons ->" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@Html.AntiForgeryToken()

@@ -1,0 +1,49 @@
+@model Advertisers.Models.AdDetails
+
+@{
+    ViewData["Title"] = "Skapa ny annons";
+}
+
+
+<h1>
+    Lägg in ny annons
+</h1>
+
+<h4>Ange annonsuppgifterna nedan</h4>
+<hr />
+@ViewBag.error
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AdInformation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ad_Headline" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Ad_Headline" class="form-control" />
+                <span asp-validation-for="Ad_Headline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ad_Content" class="col-form-label font-weight-bold"></label>
+                <textarea asp-for="Ad_Content" class="form-control"></textarea>
+                <span asp-validation-for="Ad_Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ad_ArticlePrice" class="col-form-label font-weight-bold"></label>
+                <input asp-for="Ad_ArticlePrice" class="form-control" />
+                <span asp-validation-for="Ad_ArticlePrice" class="text-danger"></span>
+            </div>
+            <p><b>Annonstyp:</b>@ViewBag.type</p>
+            <p><b>Annonspris:</b>@ViewBag.price</p>
+            <div class="form-group">
+                <input type="submit" value="Skapa annons" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@Html.AntiForgeryToken()

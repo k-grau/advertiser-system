@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Ad system 1.0";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Välkommen till annonssystemet!</h1>
+    <h2 class="display-5">Är du:</h2>
+   
+        <form asp-action="Index">
+                <input type="radio" value="Subscriber" id="Advertiser" name="Advertiser" required/>Prenumerant<br />
+                <input type="radio" value="Company" id="Advertiser" name="Advertiser" />Företagare<br />
+                <br />
+                <input type="submit" value="Gå vidare" class="btn btn-primary" />
+            
+        </form>
+       
+</div>
