@@ -9,6 +9,8 @@ Project "Subscribers" basically contains information (in a mssql-database) on re
 
 Project "Advertisers" contains the core functionality of the advertiser system such as views and controller for routing. In addition it conatins the databases with information on companies and ads and DAL-methods to extract this information. Operations requiring Subscriber information are done via Api-calls to the Subscriber-project.
 
+Folder "sql-scripts" contains the sql-queries that were used to create database tables and procedures for CRUD-operations.
+
 Please note that visual design was not a requirement for this assigment. The layout of the views are therefore just standard bootstrap and not pretty at all.
 
 The language of the advertiser-system is Swedish. 
